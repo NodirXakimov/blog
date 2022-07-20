@@ -4,7 +4,7 @@
         <div class="mb-4">
             <h1 class="font-serif text-3xl font-bold underline decoration-gray-400"> Post Index</h1>
             <div class="flex justify-end">
-                <a href="{{ route('posts.create') }}" class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600">Create Post</a>
+{{--                <a href="{{ route('posts.create') }}" class="px-4 py-2 rounded-md bg-sky-500 text-sky-100 hover:bg-sky-600">Create Post</a>--}}
             </div>
         </div>
         <div class="flex flex-col">
@@ -36,7 +36,7 @@
                                 <tr>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                         <div class="flex items-center">
-                                            {{ $loop->iteration }}
+                                            {{ ($posts->currentPage() - 1 ) * $posts->perpage() + $loop->iteration }}
                                         </div>
 
                                     </td>
@@ -96,6 +96,8 @@
                         </tbody>
                     </table>
                 </div>
+
+                {{ $posts->links() }}
             </div>
         </div>
     </div>
